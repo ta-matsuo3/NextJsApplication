@@ -1,9 +1,19 @@
 import { Children, useState } from "react";
 
-export default function FormTextarea({ setForm, form }) {
+interface FormState {
+    comment: string;
+    favorite: string[];
+}
+interface FormSelectProps {
+    form: FormState;
+    setForm: React.Dispatch<React.SetStateAction<FormState>>;
+}
 
 
-    const handleForm = e => {
+export default function FormTextarea({ setForm, form }: FormSelectProps) {
+
+
+    const handleForm = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
         setForm({
             ...form,
             [e.target.name]: e.target.value

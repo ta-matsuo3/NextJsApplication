@@ -1,10 +1,19 @@
 import { useState } from "react";
 
+interface FormState {
+    comment: string;
+    favorite: string[];
+}
+interface FormSelectProps {
+    form: FormState;
+    setForm: React.Dispatch<React.SetStateAction<FormState>>;
+}
 
+export default function FormCheckMulti({ setForm, form }: FormSelectProps) {
 
-export default function FormCheckMulti({ setForm, form }) {
+    const handleFormMulti = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.target.type !== "checkbox") return;
 
-    const handleFormMulti = e => {
         const fa = form.favorite;
         if (e.target.checked) {
             fa.push(e.target.value)

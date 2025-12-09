@@ -3,19 +3,19 @@
 import styles from "./Modal.module.css"
 import { useState } from "react";
 import FormCheckMulti from "./form/FormCheckMulti";
-import FormRadio from "./form/FormRadio";
-import FormSelect from "./form/FormSelect";
 import FormTextarea from "./form/FormTextarea";
 
 export default function Modal({ }) {
-    // セッタ関数をpropsで渡す
 
-    const [isSend, setIsSend] = useState({
-    })
-    const [form, setForm] = useState({
-        comment: ``,
-        favorite: []
-    })
+    interface FormState {
+        comment: string;
+        favorite: string[]; // 型は用途に合わせて
+    }
+
+    const [form, setForm] = useState<FormState>({
+        comment: '',
+        favorite: [],
+    });
 
     const handleClick = () => {
         console.log(form);
